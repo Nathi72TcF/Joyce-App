@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import firebase from 'firebase';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+import { HttpClientModule } from '@angular/common/http';
 
 // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -32,7 +36,9 @@ import firebase from 'firebase';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
